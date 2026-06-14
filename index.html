@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noor Khial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a; --ink-soft: #3f3f46; --muted: #71717a; --faint: #a1a1aa;
+    --rule: #e7e5e4; --panel: #faf9f7; --accent: #0f766e; --bg: #ffffff;
+    --max: 1140px;
+    --serif: "EB Garamond", Garamond, Georgia, "Times New Roman", serif;
+    --sans: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink-soft); font-family: var(--sans); font-size: 16.5px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+  strong { color: var(--ink); font-weight: 600; }
+  em { font-style: italic; }
+
+  .nav { border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(8px); }
+  .nav-inner { max-width: var(--max); margin: 0 auto; padding: 14px 30px; display: flex; align-items: center; justify-content: flex-end; }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a { color: var(--muted); font-size: 15px; font-weight: 500; }
+  .nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 60px 36px 96px; display: grid; grid-template-columns: 300px 1fr; gap: 64px; }
+
+  .sidebar { position: sticky; top: 96px; align-self: start; }
+  .card { background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 28px 26px; }
+  .avatar { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; object-position: center 22%; display: block; background: #e4e4e7; margin: 0 auto; }
+  .links { list-style: none; margin: 22px 0 0; padding: 22px 0 0; border-top: 1px solid var(--rule); display: grid; gap: 12px; }
+  .links li { display: flex; align-items: center; gap: 11px; color: var(--ink-soft); font-size: 14.5px; }
+  .links svg { width: 16px; height: 16px; flex: none; color: var(--faint); }
+  .links a { color: var(--ink-soft); }
+  .links a:hover { color: var(--accent); }
+
+  .main { min-width: 0; }
+  .hero-name { font-family: var(--serif); color: var(--ink); font-size: 46px; font-weight: 600; line-height: 1.08; letter-spacing: 0; margin: 0; }
+  .hero-namewrap { display: inline-block; }
+  .hero-ayah {
+    font-family: var(--serif); direction: rtl; text-align: center;
+    font-size: 12px; font-weight: 400; color: var(--muted);
+    line-height: 1.4; margin: 0 0 18px; width: 100%;
+  }
+  .hero-sub { color: var(--muted); font-size: 16px; margin: 0 0 30px; }
+  .lede { font-size: 17px; }
+  .lede p { margin: 0 0 18px; }
+
+  .section { margin-top: 52px; }
+  .eyebrow { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 4px; }
+  .section > h2 { font-family: var(--serif); color: var(--ink); font-size: 29px; font-weight: 600; letter-spacing: 0; margin: 0 0 22px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+
+  .rail { position: relative; padding-left: 132px; }
+  .rail::before { content: ""; position: absolute; left: 96px; top: 6px; bottom: 6px; width: 1px; background: var(--rule); }
+  .entry { position: relative; margin-bottom: 30px; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry .when { position: absolute; left: -132px; top: 1px; width: 86px; text-align: right; font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; line-height: 1.5; }
+  .entry .when .to { display: block; color: var(--faint); font-size: 11px; letter-spacing: 0.04em; text-transform: lowercase; }
+  .entry .when .end { display: block; color: var(--faint); }
+  .entry::before { content: ""; position: absolute; left: -40px; top: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+  .entry h3 { font-family: var(--sans); font-size: 16.5px; font-weight: 600; color: var(--ink); margin: 0 0 1px; }
+  .entry .org { font-size: 14.5px; color: var(--muted); margin: 0 0 8px; }
+  .entry p.body { margin: 0; font-size: 15px; }
+  .entry .tag { display: inline-block; font-size: 11.5px; font-weight: 600; color: var(--accent); background: #f0fdfa; border: 1px solid #ccfbf1; border-radius: 5px; padding: 1px 7px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.02em; }
+  .entry ul.projects { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 9px; }
+  .entry ul.projects li { position: relative; padding-left: 18px; font-size: 15px; }
+  .entry ul.projects li::before { content: ""; position: absolute; left: 2px; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: 0.55; }
+  .entry ul.projects strong { color: var(--ink); }
+
+  .pub { position: relative; padding-left: 132px; margin-bottom: 26px; }
+  .pub:last-of-type { margin-bottom: 22px; }
+  .pub .venue { position: absolute; left: 0; top: 1px; width: 86px; text-align: right; font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.02em; }
+  .pub .yr { display: block; color: var(--faint); font-weight: 400; font-size: 11.5px; margin-top: 2px; }
+  .pub .cit { font-size: 15px; margin: 0; }
+  .pub .ttl { color: var(--ink); font-weight: 500; }
+  .scholar-link { font-size: 14.5px; font-weight: 500; }
+
+  .mentors { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
+  .mentors li { font-size: 15px; line-height: 1.4; }
+  .mentors .who { color: var(--ink); font-weight: 600; }
+  .mentors .who a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 2px; }
+  .mentors .who a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+  .mentors .what { display: block; color: var(--muted); font-size: 13.5px; }
+  .mentors .what a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 2px; }
+  .mentors .what a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+  @media (max-width: 560px) { .mentors { grid-template-columns: 1fr; } }
+
+  footer { max-width: var(--max); margin: 0 auto; padding: 36px 36px 56px; border-top: 1px solid var(--rule); color: var(--faint); font-size: 13px; text-align: center; }
+  footer .dedication { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 560px; margin: 0 auto 18px; }
+  footer .copy { font-size: 13px; margin: 22px 0 0; }
+
+  @media (max-width: 820px) {
+    .wrap { grid-template-columns: 1fr; gap: 40px; padding: 40px 24px 72px; }
+    .sidebar { position: static; }
+    .card { max-width: 320px; }
+    .links { grid-template-columns: 1fr 1fr; }
+    .hero-name { font-size: 36px; }
+    .rail { padding-left: 96px; }
+    .rail::before { left: 64px; }
+    .entry .when { left: -96px; width: 60px; font-size: 12px; }
+    .entry::before { left: -38px; }
+    .pub { padding-left: 96px; }
+    .pub .venue { width: 60px; }
+    .nav-inner { padding: 15px 24px; }
+  }
+  @media (max-width: 480px) {
+    .links { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <nav class="nav-links">
+        <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside class="sidebar" id="contact">
+      <div class="card">
+        <!-- Replace src with your photo -->
+        <img class="avatar" src="noor.jpeg" alt="Noor Khial">
+        <ul class="links">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Doha, Qatar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:nornoor21@gmail.com">Email</a></li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg><a href="https://github.com/Noor-Khial" target="_blank" rel="noopener">GitHub</a></li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v3.32L12 20l7-3.5v-3.32L12 17l-7-3.82z"/></svg><a href="https://scholar.google.com/citations?user=0_2BjTIAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6"/></svg><a href="cv.pdf" target="_blank" rel="noopener">CV</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="hero-namewrap">
+        <h1 class="hero-name">Noor Khial</h1>
+        <p class="hero-ayah" dir="rtl" lang="ar">وَمَا تَوْفِيقِي إِلَّا بِاللَّهِ ۚ عَلَيْهِ تَوَكَّلْتُ وَإِلَيْهِ أُنِيبُ</p>
+      </div>
+      <p class="hero-sub">Applied AI/ML engineer &amp; researcher · Doha, Qatar</p>
+
+      <div class="lede">
+        <p>Noor is an ML/AI Engineer at <strong>Malomatia</strong>, Qatar, where she has worked on projects related to <strong>customs and logistics</strong> for the past year, under the direction of <a href="#mentors">Khadeja Al-Mahmoud</a>. Parallel to this, she has been a researcher at <strong>Qatar University</strong> under several funded projects since 2023, within the group of <a href="#mentors">Prof. Amr Mohamed</a> (<a href="https://uav-disaster-management.vercel.app/" target="_blank" rel="noopener">group</a>). Her work during MSc studies was recognized by the <strong>Research Distinguished Award</strong> and published in top-ranked AI journals. Prior to this, during her BSc capstone, she worked on the architecture of <a href="https://www.cubesatdw.org/day-1-schedule-2025-1" target="_blank" rel="noopener">QUbeSat&nbsp;I</a>, the first CubeSat launched under Qatar University, led by <a href="#mentors">Prof. Tamer Khattab</a>.</p>
+        <p>Noor is interested in <em>how learning systems can sustain performance during deployment under partially known conditions.</em> Her work focuses on settings where the environment changes in ways that aren't known in advance, with the goal of designing learning algorithms that adapt to these changes in real time. In practice, she builds AI models from offline data and adapts them to the unpredictable, real-time traffic of live systems.</p>
+      </div>
+
+      <section class="section" id="experience">
+        <p class="eyebrow">Industry</p>
+        <h2>Experience</h2>
+        <div class="rail">
+          <div class="entry">
+            <span class="when">May 2025<span class="end">Present</span></span>
+            <h3>ML/AI Engineer</h3>
+            <p class="org">Malomatia · Authority of Customs, Qatar (Al-Nadeeb)</p>
+            <ul class="projects">
+              <li><strong><a href="https://www.ecustoms.gov.qa/qccswui/#/home/hssify" target="_blank" rel="noopener">HSsify Engine</a></strong> <span class="tag">1st · Malomatia AI Contest 2025</span>: an in-house HS-code classification system built on Microsoft Azure and fine-tuned BERT-family transformers. In production at <strong>92% accuracy</strong> with an 80% efficiency gain over manual classification, measured on live traffic.</li>
+              <li><strong><a href="https://intellilogistix.onrender.com/" target="_blank" rel="noopener">IntelliLogistiX</a></strong> <span class="tag">3rd · Malomatia AI Hackathon 2026</span>: a shipment route-optimization system that learns from offline data and adapts to live network traffic to recommend efficient paths.</li>
+              <li><strong>AI-based goods valuation pipeline</strong>: combines meta-learning with transformer architectures to predict the original price of imported items. Currently at <strong>71% accuracy</strong>, in staging and under active development.</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <span class="when">Jun 2025<span class="end">Jul 2025</span></span>
+            <h3>Contributor, Islamic Studies</h3>
+            <p class="org">HBKU · <a href="https://www.cilecenter.org" target="_blank" rel="noopener">CILE</a> (Research Center for Islamic Legislation &amp; Ethics)</p>
+            <p class="body">Focused on data collection in support of research at the center.</p>
+          </div>
+          <div class="entry">
+            <span class="when">2021 · 2022</span>
+            <h3>Intern, Full Stack &amp; Arabic NLP</h3>
+            <p class="org">QCRI (Qatar Computing Research Institute)</p>
+            <p class="body">Fine-tuned AraBERT for Arabic propaganda detection (85% accuracy) and built a responsive web app for personalized investment portfolio generation in React.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="education">
+        <p class="eyebrow">Academic</p>
+        <h2>Education</h2>
+        <div class="rail">
+          <div class="entry">
+            <span class="when">Jan 2023<span class="end">Dec 2024</span></span>
+            <h3>MSc in Computing <span class="tag">Distinguished Award</span></h3>
+            <p class="org">Qatar University · GPA 3.77/4.0</p>
+            <p class="body"><a href="https://qspace.qu.edu.qa/entities/publication/9dc760ee-ed7d-4b20-ba53-02340c1acad1" target="_blank" rel="noopener">Thesis</a> on smart path planning for mobile multi-target visitation in UAV missions under stochastic and adversarial conditions, supervised by <a href="#mentors">Prof. Amr Mohamed</a>. Funded by a Graduate Research Assistantship.</p>
+          </div>
+          <div class="entry">
+            <span class="when">Jan 2018<span class="end">May 2022</span></span>
+            <h3>BSc in Computer Engineering <span class="tag">Amiri Diwan Scholarship</span></h3>
+            <p class="org">Qatar University · Dean's List 2019–2022</p>
+            <p class="body">Senior project: the integrated onboard computer and transceiver subsystem for <a href="https://www.cubesatdw.org/day-1-schedule-2025-1" target="_blank" rel="noopener">QUbeSat</a>, the first CubeSat launched by Qatar, supervised by <a href="#mentors">Prof. Tamer Khattab</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="research">
+        <p class="eyebrow">Academic</p>
+        <h2>Research Experience</h2>
+        <div class="rail">
+          <div class="entry">
+            <span class="when">Sep 2025<span class="end">Present</span></span>
+            <h3>Part-Time Researcher</h3>
+            <p class="org">Qatar University</p>
+            <p class="body">Applying a new optimistic online learning framework that combines stochastic and adversarial rates to address the problem of target detection.</p>
+          </div>
+          <div class="entry">
+            <span class="when">Jan 2023<span class="end">Jan 2025</span></span>
+            <h3>Graduate Research Assistant</h3>
+            <p class="org">Qatar University</p>
+            <p class="body">Designed online learning and deep RL algorithms for UAV navigation in non-stationary settings across multiple funded projects.</p>
+          </div>
+          <div class="entry">
+            <span class="when">May 2021<span class="end">Jul 2021</span></span>
+            <h3>NLP Research Intern</h3>
+            <p class="org">QCRI · Arabic Language Technologies</p>
+            <p class="body">Fine-tuned AraBERT for Arabic propaganda detection (85% accuracy) and built an automated data collection and preprocessing pipeline for Arabic text.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="teaching">
+        <p class="eyebrow">Academic</p>
+        <h2>Teaching</h2>
+        <div class="rail">
+          <div class="entry">
+            <span class="when">Sep 2020<span class="end">May 2021</span></span>
+            <h3>Academic Tutor</h3>
+            <p class="org">Qatar University</p>
+            <p class="body">Tutored undergraduate students in Calculus II &amp; III and Probability &amp; Statistics.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="publications">
+        <p class="eyebrow">Research</p>
+        <h2>Selected Publications</h2>
+        <div class="pub">
+          <span class="venue">KBS<span class="yr">2026</span></span>
+          <p class="cit">Khial, N., Allahham, M.S., Mhaisen, N., Ismail, L., Mabrok, M., &amp; Mohamed, A. <span class="ttl">"DRONE-RL: Dynamic reinforcement learning for online navigation of UAVs in evolving environments."</span> <em>Knowledge-Based Systems</em>, Elsevier, vol. 334, p. 115147.</p>
+        </div>
+        <div class="pub">
+          <span class="venue">ESWA<span class="yr">2025</span></span>
+          <p class="cit">Khial, N., Mhaisen, N., Mabrok, M., &amp; Mohamed, A. <span class="ttl">"An online learning framework for UAV search mission in adversarial environments."</span> <em>Expert Systems with Applications</em>, Elsevier, vol. 267, p. 126136.</p>
+        </div>
+        <div class="pub">
+          <span class="venue">ICC<span class="yr">2025</span></span>
+          <p class="cit">Khial, N., Mhaisen, N., Ismail, L., Mabrok, M., &amp; Mohamed, A. <span class="ttl">"Multi-Target Path Planning with Probabilistic Detection in Cluttered Environments."</span> <em>IEEE Int. Conf. on Communications (ICC)</em>, pp. 1298–1303.</p>
+        </div>
+        <a class="scholar-link" href="https://scholar.google.com/citations?user=0_2BjTIAAAAJ&hl=en" target="_blank" rel="noopener">Full list on Google Scholar →</a>
+      </section>
+
+      <section class="section" id="mentors">
+        <p class="eyebrow">Acknowledgements</p>
+        <p class="body" style="margin:0 0 20px; color:var(--ink-soft);">With thanks to my mentors and collaborators.</p>
+        <ul class="mentors">
+          <li><span class="who">Khadeja Al-Mahmoud</span><span class="what">Director, Malomatia</span></li>
+          <li><span class="who"><a href="http://qufaculty.qu.edu.qa/amrm/" target="_blank" rel="noopener">Prof. Amr Mohamed</a></span><span class="what">Head of the CSE Department, Qatar University · <a href="https://uav-disaster-management.vercel.app" target="_blank" rel="noopener">Group</a></span></li>
+          <li><span class="who"><a href="http://qufaculty.qu.edu.qa/tkhattab/" target="_blank" rel="noopener">Prof. Tamer Khattab</a></span><span class="what">Head of the <a href="https://iip-lab.org" target="_blank" rel="noopener">IIPL group</a>, Qatar University</span></li>
+          <li><span class="who">Dr. Tamer Elsayed</span><span class="what">Lead of the <a href="https://sites.google.com/view/bigir" target="_blank" rel="noopener">BIGIR group</a>, Qatar University</span></li>
+          <li><span class="who">Dr. Naram Mhaisen</span><span class="what">Researcher, TU Delft</span></li>
+          <li><span class="who">Dr. Mhd Saria Allahham</span><span class="what">Queen's University</span></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p class="dedication">Grateful to my family, always.</p>
+    <p class="copy">© 2026 Noor Khial · Doha, Qatar</p>
+  </footer>
+</body>
+</html>
