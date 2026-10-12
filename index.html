@@ -63,8 +63,8 @@
   .hero { background: var(--bg); border-bottom: 1px solid var(--rule); padding: 58px 0 46px; }
   .hero-inner { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
   .identity { display: grid; grid-template-columns: 146px 1fr; gap: 30px; align-items: center; }
-  .avatar-wrap { width: 146px; height: 146px; border-radius: 50%; padding: 3px; background: linear-gradient(145deg, var(--accent), var(--accent-deep)); }
-  .avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center 15%; display: block; background: #dde8e1; border: 3px solid var(--bg); }
+  .avatar-wrap { width: 146px; height: 146px; border-radius: 50%; padding: 3px; background: linear-gradient(145deg, var(--accent), var(--accent-deep)); overflow: hidden; }
+  .avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center 15%; display: block; background: #dde8e1; border: 3px solid var(--bg); transform: scale(1.2); }
   .h-name { font-family: var(--serif); color: var(--ink); font-size: 44px; font-weight: 600; line-height: 1.05; letter-spacing: -0.022em; margin: 0; }
   .h-role { color: var(--muted); font-size: 14px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; margin: 9px 0 0; }
   .h-loc { display: inline-flex; align-items: center; gap: 5px; color: var(--muted); font-size: 13.5px; margin: 5px 0 0; }
@@ -263,8 +263,8 @@
       </div>
 
       <div class="lede">
-        <p>Noor is an ML/AI Engineer at <strong>Malomatia</strong>, Qatar, working on AI systems for <strong><a href="https://www.ecustoms.gov.qa/qccswui/#/home" target="_blank" rel="noopener">customs and logistics</a></strong> under the direction of Khadeja Al-Mahmoud. In parallel, she has been a researcher at <strong>Qatar University</strong> since 2023, with the <a href="https://uav-disaster-management.vercel.app/" target="_blank" rel="noopener">group</a> of <a href="#references">Prof. Amr Mohamed</a>.</p>
-        <p>Her interest is in <em>how learning systems can sustain performance during deployment under partially known conditions.</em> Her work focuses on settings where user behavior changes in ways that aren't known in advance, with the goal of designing learning algorithms that adapt to these changes in real time. In practice, she builds AI models from offline data and adapts them to the unpredictable traffic of live systems. More recently, her interests have extended to <em>multi-agent systems</em> and <em>generative AI</em>, as new settings for the same question of sustained adaptation.</p>
+        <p>Noor is an ML/AI Engineer at <strong>Malomatia</strong>, Qatar, working on AI systems for <strong><a href="https://www.ecustoms.gov.qa/qccswui/#/home" target="_blank" rel="noopener">customs and logistics</a></strong>, across two of the three customs-oriented AI pillars, tariff classification through AI-based recommendation and goods valuation, under the direction of Khadeja Al-Mahmoud. In parallel, she has been a researcher at <strong>Qatar University</strong> since 2023, with the <a href="https://uav-disaster-management.vercel.app/" target="_blank" rel="noopener">group</a> of <a href="#references">Prof. Amr Mohamed</a>.</p>
+        <p><em>Her interest is in how learning systems can sustain performance during deployment under partially known conditions.</em> In practice, she builds models trained on historical production data and adapts them to the live traffic of live systems, deploying them into production environments through a combination of generative AI, continual learning, meta-learning, and other approaches. Her most recent research interest is <em>multi-agent systems</em>, given their potential across customs-related problems, and potentially beyond.</p>
       </div>
 
       <ul class="hero-links" id="contact">
